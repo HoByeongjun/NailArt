@@ -1,35 +1,5 @@
 import { AuroraBackground } from "@/Components/Main/Hero";
-
-function PlaySparkSvg() {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="shrink-0"
-    >
-      {/* Play triangle */}
-      <path
-        d="M18 14l16 10-16 10V14z"
-        fill="currentColor"
-        opacity={0.9}
-      />
-      {/* AI sparkle top-right */}
-      <path
-        d="M38 6l1.5 3.5L43 11l-3.5 1.5L38 16l-1.5-3.5L33 11l3.5-1.5L38 6z"
-        fill="#60a5fa"
-      />
-      {/* AI sparkle small */}
-      <path
-        d="M42 18l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"
-        fill="#a5b4fc"
-        opacity={0.7}
-      />
-    </svg>
-  );
-}
+import Navbar from "@/Components/Main/Navbar";
 
 function ThumbnailPreviewSvg() {
   return (
@@ -84,14 +54,8 @@ function ThumbnailPreviewSvg() {
 export default function Home() {
   return (
     <AuroraBackground>
-      <div className="relative z-10 flex flex-col items-center gap-8 px-6 md:px-12 max-w-3xl mx-auto">
-        {/* Logo mark */}
-        <div className="flex items-center gap-3 text-slate-800 dark:text-white">
-          <PlaySparkSvg />
-          <span className="text-xl font-semibold tracking-tight">
-            Nailart AI
-          </span>
-        </div>
+      <Navbar />
+      <div className="relative z-10 flex flex-col items-center gap-8 px-6 md:px-12 max-w-3xl mx-auto pt-20">
 
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl font-bold text-center leading-tight text-slate-900 dark:text-white">
@@ -110,7 +74,7 @@ export default function Home() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
           <a
-            href="#"
+            href="/auth"
             className="px-6 py-3 rounded-xl text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
           >
             Get Started Free

@@ -5,7 +5,21 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git config:*)",
-      "Bash(ls \"c:\\\\Users\\\\ASUS\\\\OneDrive\\\\개인\\\\01. Antigravity\\\\nailart\\\\Components\\\\Main\"\" 2>&1; echo \"---\"; ls \"c:UsersASUSOneDrive개인01. Antigravitynailartlib\"\")"
+      "Bash(ls \"c:\\\\Users\\\\ASUS\\\\OneDrive\\\\개인\\\\01. Antigravity\\\\nailart\\\\Components\\\\Main\"\" 2>&1; echo \"---\"; ls \"c:UsersASUSOneDrive개인01. Antigravitynailartlib\"\")",
+      "Bash(npx supabase projects list:*)",
+      "Bash(npx supabase login:*)",
+      "mcp__supabase__list_projects",
+      "mcp__supabase__list_tables",
+      "mcp__supabase__get_project_url",
+      "Bash(cd:*)",
+      "mcp__supabase__get_publishable_keys",
+      "mcp__supabase__search_docs",
+      "mcp__supabase__apply_migration",
+      "Bash(npx next build:*)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
 }

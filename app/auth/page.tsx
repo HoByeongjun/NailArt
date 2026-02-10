@@ -1,0 +1,164 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { AuroraBackground } from "@/Components/Main/Hero";
+import { useAuth } from "@/contexts/AuthContext";
+
+function GoogleSvg() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
+        fill="#4285F4"
+      />
+      <path
+        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+        fill="#34A853"
+      />
+      <path
+        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+        fill="#FBBC05"
+      />
+      <path
+        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+        fill="#EA4335"
+      />
+    </svg>
+  );
+}
+
+function NailartLogoSvg() {
+  return (
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M18 14l16 10-16 10V14z" fill="currentColor" opacity={0.9} />
+      <path
+        d="M38 6l1.5 3.5L43 11l-3.5 1.5L38 16l-1.5-3.5L33 11l3.5-1.5L38 6z"
+        fill="#60a5fa"
+      />
+      <path
+        d="M42 18l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"
+        fill="#a5b4fc"
+        opacity={0.7}
+      />
+    </svg>
+  );
+}
+
+export default function AuthPage() {
+  const { user, loading, signInWithGoogle } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/");
+    }
+  }, [user, loading, router]);
+
+  if (loading) {
+    return (
+      <AuroraBackground>
+        <div className="relative z-10 flex items-center justify-center min-h-screen">
+          <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        </div>
+      </AuroraBackground>
+    );
+  }
+
+  return (
+    <AuroraBackground className="!items-stretch !justify-stretch">
+      <div className="relative z-10 flex flex-col lg:flex-row w-full h-full">
+        {/* Left Panel - 3/5 */}
+        <div className="hidden lg:flex w-3/5 flex-col items-center justify-center p-12 relative">
+          {/* Semi-transparent overlay */}
+          <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm" />
+
+          <div className="relative z-10 flex flex-col items-center gap-10 w-full max-w-xl">
+            {/* YouTube Video - centered */}
+            <div className="w-full rounded-2xl overflow-hidden shadow-lg shadow-black/10 dark:shadow-black/30 border border-slate-200/50 dark:border-white/10">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="Nailart AI Demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Oversized NAILART text */}
+            <div className="w-full select-none">
+              <h1
+                className="font-black tracking-tighter text-slate-900/[0.06] dark:text-white/[0.06] leading-[0.85]"
+                style={{ fontSize: "clamp(5rem, 10vw, 11rem)" }}
+              >
+                NAIL
+                <br />
+                ART
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Panel - 2/5 */}
+        <div className="w-full lg:w-2/5 flex flex-col items-center justify-center px-6 sm:px-12 relative">
+          <div className="w-full max-w-sm">
+            {/* Logo */}
+            <div className="flex items-center gap-2.5 mb-10 text-slate-800 dark:text-white lg:justify-start justify-center">
+              <NailartLogoSvg />
+              <span className="text-xl font-semibold tracking-tight">
+                Nailart AI
+              </span>
+            </div>
+
+            {/* Card */}
+            <div className="w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl p-8 shadow-lg shadow-black/5">
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Welcome back
+              </h1>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                Sign in to start creating thumbnails
+              </p>
+
+              {/* Google Sign In */}
+              <button
+                onClick={signInWithGoogle}
+                className="mt-8 w-full flex items-center justify-center gap-3 rounded-xl border border-slate-200 dark:border-white/15 bg-white dark:bg-white/10 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-50 dark:hover:bg-white/15 cursor-pointer"
+              >
+                <GoogleSvg />
+                Continue with Google
+              </button>
+
+              {/* Terms */}
+              <p className="mt-6 text-xs text-center text-slate-400 dark:text-slate-500 leading-relaxed">
+                By continuing, you agree to our{" "}
+                <a href="#" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+                  Terms of Service
+                </a>{" "}
+                and{" "}
+                <a href="#" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+                  Privacy Policy
+                </a>
+              </p>
+            </div>
+
+            {/* Back to home */}
+            <a
+              href="/"
+              className="mt-8 block text-center text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+            >
+              &larr; Back to home
+            </a>
+          </div>
+        </div>
+      </div>
+    </AuroraBackground>
+  );
+}

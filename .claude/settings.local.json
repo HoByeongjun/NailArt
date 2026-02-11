@@ -15,7 +15,12 @@
       "mcp__supabase__get_publishable_keys",
       "mcp__supabase__search_docs",
       "mcp__supabase__apply_migration",
-      "Bash(npx next build:*)"
+      "Bash(npx next build:*)",
+      "Bash(npm run dev:*)",
+      "mcp__notebooklm__get_health",
+      "mcp__notebooklm__list_notebooks",
+      "mcp__notebooklm__add_notebook",
+      "mcp__notebooklm__ask_question"
     ]
   },
   "enableAllProjectMcpServers": true,

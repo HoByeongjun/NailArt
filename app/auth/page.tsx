@@ -73,15 +73,24 @@ export default function AuthPage() {
 
   return (
     <AuroraBackground className="!items-stretch !justify-stretch">
-      <div className="relative z-10 flex flex-col lg:flex-row w-full h-full">
-        {/* Left Panel - 3/5 */}
-        <div className="hidden lg:flex w-3/5 flex-col items-center justify-center p-12 relative">
-          {/* Semi-transparent overlay */}
-          <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm" />
+      <div className="relative z-10 flex flex-col lg:flex-row w-full h-full min-h-screen">
 
-          <div className="relative z-10 flex flex-col items-center gap-10 w-full max-w-xl">
-            {/* YouTube Video - centered */}
-            <div className="w-full rounded-2xl overflow-hidden shadow-lg shadow-black/10 dark:shadow-black/30 border border-slate-200/50 dark:border-white/10">
+        {/* 왼쪽 패널 - 3/5 */}
+        <div className="hidden lg:flex w-3/5 relative overflow-hidden items-center justify-center">
+          {/* 반투명 오버레이 */}
+          <div className="absolute inset-0 bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-xs" />
+
+          {/* NAILART 워터마크 - 배경 레이어 */}
+          <h1
+            className="absolute bottom-6 left-10 font-black tracking-[-0.05em] text-white/[0.04] leading-[0.82] select-none pointer-events-none"
+            style={{ fontSize: "clamp(6rem, 11vw, 13rem)" }}
+          >
+            NAILART
+          </h1>
+
+          {/* 영상 - 정중앙 */}
+          <div className="relative z-10 w-full max-w-3xl px-12">
+            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border border-white/10">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   className="absolute inset-0 w-full h-full"
@@ -92,25 +101,16 @@ export default function AuthPage() {
                 />
               </div>
             </div>
-
-            {/* Oversized NAILART text */}
-            <div className="w-full select-none">
-              <h1
-                className="font-black tracking-tighter text-slate-900/[0.06] dark:text-white/[0.06] leading-[0.85]"
-                style={{ fontSize: "clamp(5rem, 10vw, 11rem)" }}
-              >
-                NAIL
-                <br />
-                ART
-              </h1>
-            </div>
+            <p className="mt-4 text-sm text-white/50 font-medium text-center">
+              Watch how Nailart AI works
+            </p>
           </div>
         </div>
 
-        {/* Right Panel - 2/5 */}
-        <div className="w-full lg:w-2/5 flex flex-col items-center justify-center px-6 sm:px-12 relative">
+        {/* 오른쪽 패널 - 2/5 */}
+        <div className="w-full lg:w-2/5 flex flex-col items-center justify-center px-6 sm:px-12 relative min-h-screen lg:min-h-0">
           <div className="w-full max-w-sm">
-            {/* Logo */}
+            {/* 로고 */}
             <div className="flex items-center gap-2.5 mb-10 text-slate-800 dark:text-white lg:justify-start justify-center">
               <NailartLogoSvg />
               <span className="text-xl font-semibold tracking-tight">
@@ -118,7 +118,7 @@ export default function AuthPage() {
               </span>
             </div>
 
-            {/* Card */}
+            {/* 로그인 카드 */}
             <div className="w-full rounded-2xl border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl p-8 shadow-lg shadow-black/5">
               <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
                 Welcome back
@@ -127,7 +127,7 @@ export default function AuthPage() {
                 Sign in to start creating thumbnails
               </p>
 
-              {/* Google Sign In */}
+              {/* Google 로그인 */}
               <button
                 onClick={signInWithGoogle}
                 className="mt-8 w-full flex items-center justify-center gap-3 rounded-xl border border-slate-200 dark:border-white/15 bg-white dark:bg-white/10 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-50 dark:hover:bg-white/15 cursor-pointer"
@@ -136,7 +136,7 @@ export default function AuthPage() {
                 Continue with Google
               </button>
 
-              {/* Terms */}
+              {/* 이용약관 */}
               <p className="mt-6 text-xs text-center text-slate-400 dark:text-slate-500 leading-relaxed">
                 By continuing, you agree to our{" "}
                 <a href="#" className="underline hover:text-slate-600 dark:hover:text-slate-300">
@@ -149,7 +149,7 @@ export default function AuthPage() {
               </p>
             </div>
 
-            {/* Back to home */}
+            {/* 홈으로 */}
             <a
               href="/"
               className="mt-8 block text-center text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
